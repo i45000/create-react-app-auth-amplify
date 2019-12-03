@@ -278,3 +278,5 @@ function loadJSON() {
     fileReader.readAsText(fileToLoad, "UTF-8");
     check_all_input();
 }
+
+/* eslint no-undef: "off" */

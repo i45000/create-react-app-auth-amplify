@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+// import './javascript/main.js';
+// import './javascript/jszip.js';
+// import './javascript/jszip-utils.js';
+// import './javascript/docxtemplater-latest.js';
 import './css/style2.css';
 import { withAuthenticator } from 'aws-amplify-react'
 import Amplify, { Auth } from 'aws-amplify';
@@ -13,6 +17,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+         
          <Start />
          
          <AppHeader />
@@ -29,24 +34,15 @@ class Start extends React.Component {
   render(){
     return (
       <head>
-    <meta charset="UTF-8" />
-    <title>IVE IA Document Generator</title>
     <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <script type="text/javascript" src="./javascript/FileSaver.js"></script>
-    <script type="text/javascript" src="./javascript/jszip.js"></script>
-    <script type="text/javascript" src="./javascript/jszip-utils.js"></script>
-    <script type="text/javascript" src="./javascript/docxtemplater-latest.js"></script>
-    <script type="text/javascript" src="./javascript/main.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"
-            integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
-            crossorigin="anonymous"></script>
 </head>
       )
   }
 }
+
 class AppHeader extends React.Component {
   render(){
     return (
@@ -1648,3 +1644,16 @@ class ApppendingLoadJSON extends React.Component {
 }
 
 export default withAuthenticator(App, true);
+
+
+/* componentDidMount() {
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = "./javascript/FileSaver.js";
+    //For head
+    document.head.appendChild(script);
+
+    // For body
+    document.body.appendChild(script);
+  }
+*/
