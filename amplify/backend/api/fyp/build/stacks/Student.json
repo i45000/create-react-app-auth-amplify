@@ -78,7 +78,7 @@
         }
     },
     "Resources": {
-        "TodoTable": {
+        "StudentTable": {
             "Type": "AWS::DynamoDB::Table",
             "Properties": {
                 "TableName": {
@@ -88,7 +88,7 @@
                             "Fn::Join": [
                                 "-",
                                 [
-                                    "Todo",
+                                    "Student",
                                     {
                                         "Ref": "GetAttGraphQLAPIApiId"
                                     },
@@ -102,7 +102,7 @@
                             "Fn::Join": [
                                 "-",
                                 [
-                                    "Todo",
+                                    "Student",
                                     {
                                         "Ref": "GetAttGraphQLAPIApiId"
                                     }
@@ -174,7 +174,7 @@
             },
             "DeletionPolicy": "Delete"
         },
-        "TodoIAMRole": {
+        "StudentIAMRole": {
             "Type": "AWS::IAM::Role",
             "Properties": {
                 "RoleName": {
@@ -184,7 +184,7 @@
                             "Fn::Join": [
                                 "-",
                                 [
-                                    "Todo",
+                                    "Student",
                                     "role",
                                     {
                                         "Ref": "GetAttGraphQLAPIApiId"
@@ -199,7 +199,7 @@
                             "Fn::Join": [
                                 "-",
                                 [
-                                    "Todo",
+                                    "Student",
                                     "role",
                                     {
                                         "Ref": "GetAttGraphQLAPIApiId"
@@ -251,7 +251,7 @@
                                                                 "Fn::Join": [
                                                                     "-",
                                                                     [
-                                                                        "Todo",
+                                                                        "Student",
                                                                         {
                                                                             "Ref": "GetAttGraphQLAPIApiId"
                                                                         },
@@ -265,7 +265,7 @@
                                                                 "Fn::Join": [
                                                                     "-",
                                                                     [
-                                                                        "Todo",
+                                                                        "Student",
                                                                         {
                                                                             "Ref": "GetAttGraphQLAPIApiId"
                                                                         }
@@ -288,7 +288,7 @@
                                                                 "Fn::Join": [
                                                                     "-",
                                                                     [
-                                                                        "Todo",
+                                                                        "Student",
                                                                         {
                                                                             "Ref": "GetAttGraphQLAPIApiId"
                                                                         },
@@ -302,7 +302,7 @@
                                                                 "Fn::Join": [
                                                                     "-",
                                                                     [
-                                                                        "Todo",
+                                                                        "Student",
                                                                         {
                                                                             "Ref": "GetAttGraphQLAPIApiId"
                                                                         }
@@ -322,17 +322,17 @@
                 ]
             }
         },
-        "TodoDataSource": {
+        "StudentDataSource": {
             "Type": "AWS::AppSync::DataSource",
             "Properties": {
                 "ApiId": {
                     "Ref": "GetAttGraphQLAPIApiId"
                 },
-                "Name": "TodoTable",
+                "Name": "StudentTable",
                 "Type": "AMAZON_DYNAMODB",
                 "ServiceRoleArn": {
                     "Fn::GetAtt": [
-                        "TodoIAMRole",
+                        "StudentIAMRole",
                         "Arn"
                     ]
                 },
@@ -347,7 +347,7 @@
                                 "Fn::Join": [
                                     "-",
                                     [
-                                        "Todo",
+                                        "Student",
                                         {
                                             "Ref": "GetAttGraphQLAPIApiId"
                                         },
@@ -361,7 +361,7 @@
                                 "Fn::Join": [
                                     "-",
                                     [
-                                        "Todo",
+                                        "Student",
                                         {
                                             "Ref": "GetAttGraphQLAPIApiId"
                                         }
@@ -373,10 +373,10 @@
                 }
             },
             "DependsOn": [
-                "TodoIAMRole"
+                "StudentIAMRole"
             ]
         },
-        "GetTodoResolver": {
+        "GetStudentResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -384,11 +384,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "TodoDataSource",
+                        "StudentDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "getTodo",
+                "FieldName": "getStudent",
                 "TypeName": "Query",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Sub": [
@@ -405,7 +405,7 @@
                                     ".",
                                     [
                                         "Query",
-                                        "getTodo",
+                                        "getStudent",
                                         "req",
                                         "vtl"
                                     ]
@@ -429,7 +429,7 @@
                                     ".",
                                     [
                                         "Query",
-                                        "getTodo",
+                                        "getStudent",
                                         "res",
                                         "vtl"
                                     ]
@@ -440,7 +440,7 @@
                 }
             }
         },
-        "ListTodoResolver": {
+        "ListStudentResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -448,11 +448,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "TodoDataSource",
+                        "StudentDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "listTodos",
+                "FieldName": "listStudents",
                 "TypeName": "Query",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Sub": [
@@ -469,7 +469,7 @@
                                     ".",
                                     [
                                         "Query",
-                                        "listTodos",
+                                        "listStudents",
                                         "req",
                                         "vtl"
                                     ]
@@ -493,7 +493,7 @@
                                     ".",
                                     [
                                         "Query",
-                                        "listTodos",
+                                        "listStudents",
                                         "res",
                                         "vtl"
                                     ]
@@ -504,7 +504,7 @@
                 }
             }
         },
-        "CreateTodoResolver": {
+        "CreateStudentResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -512,11 +512,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "TodoDataSource",
+                        "StudentDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "createTodo",
+                "FieldName": "createStudent",
                 "TypeName": "Mutation",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Sub": [
@@ -533,7 +533,7 @@
                                     ".",
                                     [
                                         "Mutation",
-                                        "createTodo",
+                                        "createStudent",
                                         "req",
                                         "vtl"
                                     ]
@@ -557,7 +557,7 @@
                                     ".",
                                     [
                                         "Mutation",
-                                        "createTodo",
+                                        "createStudent",
                                         "res",
                                         "vtl"
                                     ]
@@ -568,7 +568,7 @@
                 }
             }
         },
-        "UpdateTodoResolver": {
+        "UpdateStudentResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -576,11 +576,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "TodoDataSource",
+                        "StudentDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "updateTodo",
+                "FieldName": "updateStudent",
                 "TypeName": "Mutation",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Sub": [
@@ -597,7 +597,7 @@
                                     ".",
                                     [
                                         "Mutation",
-                                        "updateTodo",
+                                        "updateStudent",
                                         "req",
                                         "vtl"
                                     ]
@@ -621,7 +621,7 @@
                                     ".",
                                     [
                                         "Mutation",
-                                        "updateTodo",
+                                        "updateStudent",
                                         "res",
                                         "vtl"
                                     ]
@@ -632,7 +632,7 @@
                 }
             }
         },
-        "DeleteTodoResolver": {
+        "DeleteStudentResolver": {
             "Type": "AWS::AppSync::Resolver",
             "Properties": {
                 "ApiId": {
@@ -640,11 +640,11 @@
                 },
                 "DataSourceName": {
                     "Fn::GetAtt": [
-                        "TodoDataSource",
+                        "StudentDataSource",
                         "Name"
                     ]
                 },
-                "FieldName": "deleteTodo",
+                "FieldName": "deleteStudent",
                 "TypeName": "Mutation",
                 "RequestMappingTemplateS3Location": {
                     "Fn::Sub": [
@@ -661,7 +661,7 @@
                                     ".",
                                     [
                                         "Mutation",
-                                        "deleteTodo",
+                                        "deleteStudent",
                                         "req",
                                         "vtl"
                                     ]
@@ -685,7 +685,7 @@
                                     ".",
                                     [
                                         "Mutation",
-                                        "deleteTodo",
+                                        "deleteStudent",
                                         "res",
                                         "vtl"
                                     ]
@@ -698,11 +698,11 @@
         }
     },
     "Outputs": {
-        "GetAttTodoTableStreamArn": {
+        "GetAttStudentTableStreamArn": {
             "Description": "Your DynamoDB table StreamArn.",
             "Value": {
                 "Fn::GetAtt": [
-                    "TodoTable",
+                    "StudentTable",
                     "StreamArn"
                 ]
             },
@@ -715,18 +715,18 @@
                                 "Ref": "AppSyncApiId"
                             },
                             "GetAtt",
-                            "TodoTable",
+                            "StudentTable",
                             "StreamArn"
                         ]
                     ]
                 }
             }
         },
-        "GetAttTodoDataSourceName": {
+        "GetAttStudentDataSourceName": {
             "Description": "Your model DataSource name.",
             "Value": {
                 "Fn::GetAtt": [
-                    "TodoDataSource",
+                    "StudentDataSource",
                     "Name"
                 ]
             },
@@ -739,17 +739,17 @@
                                 "Ref": "AppSyncApiId"
                             },
                             "GetAtt",
-                            "TodoDataSource",
+                            "StudentDataSource",
                             "Name"
                         ]
                     ]
                 }
             }
         },
-        "GetAttTodoTableName": {
+        "GetAttStudentTableName": {
             "Description": "Your DynamoDB table name.",
             "Value": {
-                "Ref": "TodoTable"
+                "Ref": "StudentTable"
             },
             "Export": {
                 "Name": {
@@ -760,7 +760,7 @@
                                 "Ref": "AppSyncApiId"
                             },
                             "GetAtt",
-                            "TodoTable",
+                            "StudentTable",
                             "Name"
                         ]
                     ]

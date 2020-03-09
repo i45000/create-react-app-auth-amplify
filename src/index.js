@@ -10,9 +10,7 @@ import { createStore } from './utils/createStore'
 
 import * as serviceWorker from './serviceWorker';
 
-import Amplify, { Auth } from 'aws-amplify';
-import aws_exports from './aws-exports';
-Amplify.configure(aws_exports);
+
 
 const store = createStore({ rootReducer })
 const persistor = persistStore(store)

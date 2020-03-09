@@ -8,11 +8,22 @@ type Programe
 }
 
 
-type Todo 
-@model
-@auth(rules: [{allow: owner}]) {
+type Campus
+  @model
+  @auth(rules: [{allow: owner}]) {
   id: ID!
-  name: String!
-  description: String
-  completed:Boolean
+  campusID: String!
+  campusName: String
+  title: String!
+
+}
+
+type Student
+  @model
+  @auth(rules: [{allow: owner}]) {
+  id :ID!
+  stuID: String!
+  studyYaer: String
+  class: String!
+
 }

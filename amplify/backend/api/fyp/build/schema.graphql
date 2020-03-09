@@ -4,11 +4,18 @@ type Programe {
   title: String!
 }
 
-type Todo {
+type Campus {
   id: ID!
-  name: String!
-  description: String
-  completed: Boolean
+  campusID: String!
+  campusName: String
+  title: String!
+}
+
+type Student {
+  id: ID!
+  stuID: String!
+  studyYaer: String
+  class: String!
 }
 
 enum ModelSortDirection {
@@ -88,8 +95,10 @@ input ModelProgrameFilterInput {
 type Query {
   getPrograme(id: ID!): Programe
   listProgrames(filter: ModelProgrameFilterInput, limit: Int, nextToken: String): ModelProgrameConnection
-  getTodo(id: ID!): Todo
-  listTodos(filter: ModelTodoFilterInput, limit: Int, nextToken: String): ModelTodoConnection
+  getCampus(id: ID!): Campus
+  listCampuss(filter: ModelCampusFilterInput, limit: Int, nextToken: String): ModelCampusConnection
+  getStudent(id: ID!): Student
+  listStudents(filter: ModelStudentFilterInput, limit: Int, nextToken: String): ModelStudentConnection
 }
 
 input CreateProgrameInput {
@@ -112,49 +121,88 @@ type Mutation {
   createPrograme(input: CreateProgrameInput!): Programe
   updatePrograme(input: UpdateProgrameInput!): Programe
   deletePrograme(input: DeleteProgrameInput!): Programe
-  createTodo(input: CreateTodoInput!): Todo
-  updateTodo(input: UpdateTodoInput!): Todo
-  deleteTodo(input: DeleteTodoInput!): Todo
+  createCampus(input: CreateCampusInput!): Campus
+  updateCampus(input: UpdateCampusInput!): Campus
+  deleteCampus(input: DeleteCampusInput!): Campus
+  createStudent(input: CreateStudentInput!): Student
+  updateStudent(input: UpdateStudentInput!): Student
+  deleteStudent(input: DeleteStudentInput!): Student
 }
 
 type Subscription {
   onCreatePrograme: Programe @aws_subscribe(mutations: ["createPrograme"])
   onUpdatePrograme: Programe @aws_subscribe(mutations: ["updatePrograme"])
   onDeletePrograme: Programe @aws_subscribe(mutations: ["deletePrograme"])
-  onCreateTodo: Todo @aws_subscribe(mutations: ["createTodo"])
-  onUpdateTodo: Todo @aws_subscribe(mutations: ["updateTodo"])
-  onDeleteTodo: Todo @aws_subscribe(mutations: ["deleteTodo"])
+  onCreateCampus: Campus @aws_subscribe(mutations: ["createCampus"])
+  onUpdateCampus: Campus @aws_subscribe(mutations: ["updateCampus"])
+  onDeleteCampus: Campus @aws_subscribe(mutations: ["deleteCampus"])
+  onCreateStudent: Student @aws_subscribe(mutations: ["createStudent"])
+  onUpdateStudent: Student @aws_subscribe(mutations: ["updateStudent"])
+  onDeleteStudent: Student @aws_subscribe(mutations: ["deleteStudent"])
 }
 
-type ModelTodoConnection {
-  items: [Todo]
+type ModelCampusConnection {
+  items: [Campus]
   nextToken: String
 }
 
-input ModelTodoFilterInput {
+input ModelCampusFilterInput {
   id: ModelIDFilterInput
-  name: ModelStringFilterInput
-  description: ModelStringFilterInput
-  completed: ModelBooleanFilterInput
-  and: [ModelTodoFilterInput]
-  or: [ModelTodoFilterInput]
-  not: ModelTodoFilterInput
+  campusID: ModelStringFilterInput
+  campusName: ModelStringFilterInput
+  title: ModelStringFilterInput
+  and: [ModelCampusFilterInput]
+  or: [ModelCampusFilterInput]
+  not: ModelCampusFilterInput
 }
 
-input CreateTodoInput {
+input CreateCampusInput {
   id: ID
-  name: String!
-  description: String
-  completed: Boolean
+  campusID: String!
+  campusName: String
+  title: String!
 }
 
-input UpdateTodoInput {
+input UpdateCampusInput {
   id: ID!
-  name: String
-  description: String
-  completed: Boolean
+  campusID: String
+  campusName: String
+  title: String
 }
 
-input DeleteTodoInput {
+input DeleteCampusInput {
+  id: ID
+}
+
+type ModelStudentConnection {
+  items: [Student]
+  nextToken: String
+}
+
+input ModelStudentFilterInput {
+  id: ModelIDFilterInput
+  stuID: ModelStringFilterInput
+  studyYaer: ModelStringFilterInput
+  class: ModelStringFilterInput
+  and: [ModelStudentFilterInput]
+  or: [ModelStudentFilterInput]
+  not: ModelStudentFilterInput
+}
+
+input CreateStudentInput {
+  id: ID
+  stuID: String!
+  studyYaer: String
+  class: String!
+}
+
+input UpdateStudentInput {
+  id: ID!
+  stuID: String
+  studyYaer: String
+  class: String
+}
+
+input DeleteStudentInput {
   id: ID
 }

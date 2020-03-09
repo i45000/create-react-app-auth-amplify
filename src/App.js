@@ -5,11 +5,9 @@ import Amplify from 'aws-amplify';
 // @flow strict
 
 import classNames from 'classnames'
-
 import { isIOS } from 'react-device-detect'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
-
 import faviconDark from './assets/favicon-dark.ico'
 import favicon from './assets/favicon.ico'
 import { Container } from './Components/Container'
@@ -25,10 +23,9 @@ import { ImportExport } from './Containers/ImportExport'
 import { ToolBar } from './Containers/ToolBar'
 import './Containers/App/index.css'
 
+
 import aws_exports from './aws-exports';
-
 import { withAuthenticator } from 'aws-amplify-react';
-
 Amplify.configure(aws_exports);
 
 

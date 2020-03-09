@@ -9,5 +9,5 @@
         ]
     },
     "S3DeploymentBucket": "authcra-master-20191020134812-deployment",
-    "S3DeploymentRootKey": "amplify-appsync-files/84cda8fb64e00ac88cd1233b1a840af524340ef3"
+    "S3DeploymentRootKey": "amplify-appsync-files/a98f19c4489c2c73b520fb8612c9f48d9d2522e0"
 }
