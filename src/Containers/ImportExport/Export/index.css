@@ -1,0 +1,28 @@
+.jsonToolbar {
+  height: 37px;
+  box-shadow: 0 0 5px rgba(170, 170, 170, 0.7);
+  padding: 0 10px;
+  z-index: 9;
+  transition: 0.5s;
+}
+
+.jsonToolbar.dark {
+  background-color: #222;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.jsonContent {
+  border-width: 0 1px 1px 1px;
+  border-style: solid;
+  border-color: #e9e9e9;
+  background-color: #fcfcfc;
+  overflow: auto;
+  height: 100%;
+  padding: 10px;
+  transition: 0.5s;
+}
+
+.jsonContent.dark {
+  border-color: #323335;
+  background-color: rgb(28, 32, 35);
+}

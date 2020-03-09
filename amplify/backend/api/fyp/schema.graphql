@@ -1,0 +1,18 @@
+type Programe
+  @model
+  @auth(rules: [{allow: owner}]) {
+  id: ID!
+  proCode:String!
+  title: String!
+
+}
+
+
+type Todo 
+@model
+@auth(rules: [{allow: owner}]) {
+  id: ID!
+  name: String!
+  description: String
+  completed:Boolean
+}

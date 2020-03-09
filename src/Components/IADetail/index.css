@@ -1,0 +1,14 @@
+.to {
+  margin: 0 5px;
+}
+
+.noWidth {
+  width: 100px;
+  margin-right: 5px;
+  flex-shrink: 0;
+}
+
+.atTheEndOf {
+  width: 115px;
+  flex-shrink: 0;
+}

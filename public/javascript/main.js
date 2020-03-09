@@ -1,3 +1,7 @@
+import saveAs from 'FileSaver.js';
+import JSZip from './jszip.js';
+import Docxtemplater from './docxtemplater-latest'; 
+import JSZipUtils from  './jszip-utils';
 let prepareJson = {};
 
 const today = new Date();
@@ -6,20 +10,8 @@ const mm = today.getMonth() + 1; //January is 0!
 const yyyy = today.getFullYear();
 const today_str = mm + '/' + dd + '/' + yyyy;
 
-window.onload = () => {
-    document.getElementById('first_year').value = yyyy - 1;
-    document.getElementById('this_year').value = yyyy;
-    let inputs = document.getElementsByTagName('input');
-    for (let i = 0; i < inputs.length; i++) {
-        let input = inputs[i];
-        input.addEventListener('focus', toggleClass);
-        input.addEventListener('blur', toggleClass);
-        input.addEventListener("change", check_input);
-    }
-    check_all_input()
-};
 
-function toggleClass() {
+window.onload = function toggleClass() {
     let obj = this.previousElementSibling;
     while (obj.tagName !== "LABEL") {
         obj = obj.previousElementSibling;
@@ -28,14 +20,13 @@ function toggleClass() {
     check_all_input()
 }
 
-function check_all_input() {
+window.onload = function check_all_input() {
     let all_inputs = document.getElementsByTagName('input');
     for (let i = 0; i < all_inputs.length; i++) {
         let input = all_inputs[i];
         if (input.type === "text") {
             let inputs = input.parentElement.getElementsByTagName('input');
             let error = input.parentElement.previousElementSibling.getElementsByClassName("count")[0];
-            error.innerHTML = 0;
             for (let i = 0; i < inputs.length; i++) {
                 let input = inputs[i];
                 if (input.value === "" && input.style.display !== "none") {
@@ -46,7 +37,7 @@ function check_all_input() {
     }
 }
 
-function check_input() {
+window.onload = function check_input() {
     let inputs = this.parentElement.getElementsByTagName('input');
     let error = this.parentElement.previousElementSibling.getElementsByClassName("count")[0];
     error.innerHTML = 0;
@@ -59,7 +50,7 @@ function check_input() {
 }
 
 
-function saveAsJson() {
+window.onload = function saveAsJson() {
     getData();
     getCheckbox();
     getRadio();
@@ -68,7 +59,7 @@ function saveAsJson() {
     saveAs(blob, "data.json");
 }
 
-function generateFile() {
+window.onload = function generateFile() {
     getData();
     getCheckbox();
     getRadio();
@@ -104,11 +95,11 @@ function generateFile() {
     });
 }
 
-function loadFile(url, callback) {
+window.onload = function loadFile(url, callback) {
     JSZipUtils.getBinaryContent(url, callback);
 }
 
-function getCheckbox() {
+window.onload = function getCheckbox() {
     let inputs = document.getElementsByClassName('form_checkbox');
     var r;
     for (r = 0; r < inputs.length; r++) {
@@ -122,7 +113,7 @@ function getCheckbox() {
     }
 }
 
-function getTextarea() {
+window.onload = function getTextarea() {
     let inputs = document.getElementsByClassName('form_textarea');
     var r;
     for (r = 0; r < inputs.length; r++) {
@@ -132,7 +123,7 @@ function getTextarea() {
     }
 }
 
-function getRadio() {
+window.onload = function getRadio() {
     let inputs = document.getElementsByClassName('form_radio');
     var r;
     for (r = 0; r < inputs.length; r++) {
@@ -146,7 +137,7 @@ function getRadio() {
     }
 }
 
-function getData() {
+window.onload = function getData() {
     let inputs = document.getElementsByTagName('input');
     for (let i = 0; i < inputs.length; i += 1) {
         let form_value = '';
@@ -199,7 +190,7 @@ function getData() {
     prepareJson['allowance_per_day'] = prepareJson['allowance_per_mon'] / 30;
 }
 
-function loadJSON() {
+window.onload = function loadJSON() {
     let fileToLoad = document.getElementById("fileToLoad").files[0];
 
     let fileReader = new FileReader();
@@ -278,3 +269,6 @@ function loadJSON() {
     fileReader.readAsText(fileToLoad, "UTF-8");
     check_all_input();
 }
+
+
+/*global toggleClass*/

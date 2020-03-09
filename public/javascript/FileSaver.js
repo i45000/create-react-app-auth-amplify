@@ -176,7 +176,7 @@ var saveAs = saveAs || (function(view) {
 
 	return saveAs;
 }(
-	   typeof self !== "undefined" && self
+	   typeof window.self !== "undefined" && window.self
 	|| typeof window !== "undefined" && window
 	|| this
 ));

@@ -1,0 +1,15 @@
+.container {
+  border: 1px #e9e9e9 solid;
+  background-color: #fcfcfc;
+  overflow: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  transition: 0.5s;
+}
+
+.container.dark {
+  background-color: #222;
+  border-color: #323335;
+}
